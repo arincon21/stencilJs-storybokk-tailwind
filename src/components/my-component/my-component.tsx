@@ -4,7 +4,6 @@ import { format } from '../../utils/utils';
 @Component({
   tag: 'my-component',
   styleUrl: 'my-component.css',
-  shadow: true,
 })
 export class MyComponent {
   /**
@@ -27,6 +26,6 @@ export class MyComponent {
   }
 
   render() {
-    return <div>Hello, World! I'm {this.getText()}</div>;
+    return <div class="bg-indigo-500 p-6 rounded-md flex justify-center">Hello, World! I'm {this.getText()}</div>;
   }
 }

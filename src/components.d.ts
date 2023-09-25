@@ -6,6 +6,12 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface MokExaple {
+        "text": string;
+    }
+    interface MokH1 {
+        "text": string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -22,6 +28,18 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLMokExapleElement extends Components.MokExaple, HTMLStencilElement {
+    }
+    var HTMLMokExapleElement: {
+        prototype: HTMLMokExapleElement;
+        new (): HTMLMokExapleElement;
+    };
+    interface HTMLMokH1Element extends Components.MokH1, HTMLStencilElement {
+    }
+    var HTMLMokH1Element: {
+        prototype: HTMLMokH1Element;
+        new (): HTMLMokH1Element;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -29,10 +47,18 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "mok-exaple": HTMLMokExapleElement;
+        "mok-h1": HTMLMokH1Element;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface MokExaple {
+        "text"?: string;
+    }
+    interface MokH1 {
+        "text"?: string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -48,6 +74,8 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface IntrinsicElements {
+        "mok-exaple": MokExaple;
+        "mok-h1": MokH1;
         "my-component": MyComponent;
     }
 }
@@ -55,6 +83,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "mok-exaple": LocalJSX.MokExaple & JSXBase.HTMLAttributes<HTMLMokExapleElement>;
+            "mok-h1": LocalJSX.MokH1 & JSXBase.HTMLAttributes<HTMLMokH1Element>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
